@@ -9,8 +9,35 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+from decouple import config,Csv
+import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import django_heroku
+
+MODE=config("MODE", default="dev")
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = os.environ.get('DEBUG', True)
+
+#adding config
+cloudinary.config( 
+  cloud_name = 'the-collector', 
+  api_key =  '385692492331583', 
+  api_secret = 'wpPzGYYSWBJ_4NCwwSEC0YUMSO8'
+)
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'the-collector',
+    'API_KEY': '385692492331583',
+    'API_SECRET': 'wpPzGYYSWBJ_4NCwwSEC0YUMSO8'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,6 +57,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'awwardsApp',
+    'crispy_forms',
+    'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,9 +103,11 @@ WSGI_APPLICATION = 'awwardsProject.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+   'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER' :   config('DB_USER'),
+        'PASSWORD' :  config('DB_PASSWORD'),
     }
 }
 
@@ -104,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
