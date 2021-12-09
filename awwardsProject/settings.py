@@ -59,6 +59,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'awwardsApp',
     'crispy_forms',
+    'bootstrap4',
     'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -144,11 +145,18 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = 'index'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
