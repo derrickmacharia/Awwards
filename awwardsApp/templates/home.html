@@ -4,5 +4,9 @@
 {{block.super}}
 
 <h2>Awwards...</h2>
+{% for pics in images %}
+<img src="{{ pics.image.url }}" alt=""class="img-fluid card-img-top">
+{{pics.description}}
+{% endfor %}
 
 {% endblock %}

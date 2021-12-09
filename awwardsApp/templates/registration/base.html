@@ -1,0 +1,35 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Instagram Application - Account </title>
+    <!-- favico -->
+    
+
+    {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    {% endblock %}
+
+</head>
+
+<body>
+    <!-- content -->
+    {% block content %}
+
+    {%endblock%}
+
+    
+
+    <!-- scripts -->
+    {% block scripts %}
+    {% bootstrap_javascript %}
+    {% endblock %}
+
+</body>
+
+</html>
