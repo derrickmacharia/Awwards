@@ -1,3 +1,30 @@
 h2{
     color: crimson;
 }
+.navicons{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    
+    
+}
+.navicons a{
+    color: black;
+}
+.navi1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.navigation{
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.07);
+}
+.nav1{
+    
+    margin: 0rem 3rem;
+}
+.ngoso{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-weight: 50;
+}
