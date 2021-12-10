@@ -29,3 +29,10 @@ class Image(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE,null=True)
     location = models.ForeignKey(Location, on_delete=models.CASCADE,null=True)
     post_date = models.DateTimeField(auto_now_add=True,null=True)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_photo = CloudinaryField('image')
+    bio = models.TextField(max_length=500, blank=True, null=True)
+    contact = models.CharField(max_length=50, blank=True, null=True)

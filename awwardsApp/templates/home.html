@@ -3,10 +3,37 @@
 {% block content %}
 {{block.super}}
 
-<h2>Awwards...</h2>
-{% for pics in images %}
-<img src="{{ pics.image.url }}" alt=""class="img-fluid card-img-top">
-{{pics.description}}
-{% endfor %}
+<h1>good</h1>
 
+
+<section class="blog-section" id="posts main">
+    <div class="container mt-5" style="gap: 15px;">
+        
+        <div class="row mt-4" id="">
+            {% for pics in images %}
+            <div class="col-md-12 col-md-6 col-lg-4" id="main" style="gap: 15px;">
+                <div class="card mb-4" id="">
+                    <img src="{{ pics.image.url }}"
+                        class="card-img-top responsive" alt="Personal">
+                    <div class="card-body ">
+                        <p class="fade-item mb-2">{{ pics.title }}</p>
+                        <div class="d-flex justify-content-between location-date">
+                            <div>
+                                <p class="text-capitalise">{{ pics.location }}</p>
+                            </div>
+                            <div>
+                                <p>{{ pics.post_date|date}}</p>
+                            </div>
+                        </div>
+                        <div class="profiles">
+                            {{user.user.profile_image}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
 {% endblock %}
