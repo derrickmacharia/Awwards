@@ -3,8 +3,6 @@
 {% block content %}
 {{block.super}}
 
-<h1>good</h1>
-
 
 <section class="blog-section" id="posts main">
     <div class="container mt-5" style="gap: 15px;">
@@ -25,14 +23,15 @@
                                 <p>{{ pics.post_date|date}}</p>
                             </div>
                         </div>
-                        <div class="profiles">
-                            {{user.user.profile_image}}
-                        </div>
+
                     </div>
                 </div>
             </div>
             {% endfor %}
-
+            <div class="profiles">
+                            
+                {{user.user.bio}}
+            </div>
         </div>
     </div>
 </section>
