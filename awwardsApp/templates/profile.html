@@ -39,13 +39,60 @@
                                 {{ user.post_date|date }} </span></h6>
 
                     </div>
+
+                    
                 </div>
+                <div class="col-md-3">
+                    <form action="/project/">
+                        <input type="submit" style=" background :linear-gradient(to left,#fd1d1d,#fcb045)"value="Post a picture" />
+                    </form>
+                </div>
+                <div class = "" data-toggle ="modal" data-target="#profile">
+                    <button class="phots"><i class="fa fa-plus text-white"></i>Update Profile</button>
+                </div>
+                <div class="details">
+                    <div class="first">
+                      <h3>{{user.username}}</h3>
+                      {% if request.user is user %}  
+                      <div>
+                        <a href="{%url 'update_profile' user.id %}" class="btn btn-outline-primary mb-4">
+                          Edit Profile
+                        </a>
+                      </div>
+                      {% endif %}
                 
+                    </div>
+                </div>
 
             </div>
 
         </div>
     </div>
+    </div>
+    <div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered mode" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalPictureTitle">Update Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                {% load crispy_forms_tags %}
+                <form method="post" enctype="multipart/form-data" style="margin-top: 1.3em;">
+                          {{ form | crispy }}
+                          {% csrf_token %}
+                          <button class=" btn btn-dark" type="submit">Update Profile</button>
+                 </form>
+
+            </div>
+            <div class="modal-footer">
+                
+                
+            </div>
+        </div>
+          
     </div>
 </section>
 {% endblock %}

@@ -3,6 +3,8 @@
 {% block content %}
 {{block.super}}
 
+<h1>good</h1>
+
 
 <section class="blog-section" id="posts main">
     <div class="container mt-5" style="gap: 15px;">
@@ -21,7 +23,9 @@
                             </div>
                             <div>
                                 <p>{{ pics.post_date|date}}</p>
+                                <p>{{ pics.user.bio}}</p>
                             </div>
+                            <a href="{{pics.url}}">link</a>
                         </div>
 
                     </div>
@@ -30,7 +34,7 @@
             {% endfor %}
             <div class="profiles">
                             
-                {{user.user.bio}}
+                {{prof_user.user.bio}}
             </div>
         </div>
     </div>
