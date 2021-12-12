@@ -21,20 +21,21 @@ import cloudinary.api
 
 #     return render(request, 'home.html',{'images': images, 'user':user})
 
+@login_required(login_url="/accounts/login/")
 def home(request):
     images = Project.objects.all().order_by('-id')
 
     return render(request, 'home.html', {'images':images})
 
+@login_required(login_url="/accounts/login/")
 def profile(request):
     current_user = request.user
-    image = Project.objects.filter(user_id=current_user.id)
     profile = Profile.objects.filter(user_id=current_user.id).first()
+    project = Project.objects.filter(user_id=current_user.id).all() 
 
-    context = {"image": image, "profile": profile}
+    return render(request, "profile.html", {"profile": profile, "project": project})
 
-    return render(request, 'profile.html',context)
-
+@login_required(login_url="/accounts/login/")
 def upload(request):
     if request.method =='POST':
         form = ProjectForm(request.POST, request.FILES)
@@ -46,6 +47,7 @@ def upload(request):
         form =  ProjectForm()
     return render(request, 'project.html', {'form':form})
 
+@login_required(login_url="/accounts/login/")
 def create_profile(request):
     current_user = request.user
     title = "Create Profile"
@@ -61,16 +63,18 @@ def create_profile(request):
         form = ProfileForm()
     return render(request, 'create_profile.html', {"form": form, "title": title})
 
+@login_required(login_url="/accounts/login/")
 def update_profile(request,id):
     user = User.objects.get(id=id)
     profile = Profile.objects.get(user = user)
     form = UpdateProfileForm(instance=profile)
     if request.method == "POST":
             form = UpdateProfileForm(request.POST,request.FILES,instance=profile)
-            if form.is_valid():      
+            if form.is_valid():  
+                
                 profile = form.save(commit=False)
                 profile.save()
                 return redirect('profile') 
             
     ctx = {"form":form}
-    return render(request, 'profile.html', ctx)
+    return render(request, 'update_profile.html', ctx)
