@@ -3,9 +3,9 @@
 <br><br><br><br>
  <div class="container-fluid">
   <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
               {% if project.image %}
-              <img src="{{project.image.url}}" alt="" class="card-img-top">
+              <img src="{{project.image.url}}" alt="" class="card-img-top" style="height: 60vh; object-fit: cover;">
               {% endif %}
               <div class="cardShare">
                 <a id="share" class="share-icon" href="{{project.url}}" target="_blank"><i class="fa fa-share"></i></a>

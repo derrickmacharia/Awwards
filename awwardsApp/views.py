@@ -24,8 +24,9 @@ import cloudinary.api
 @login_required(login_url="/accounts/login/")
 def home(request):
     images = Project.objects.all().order_by('-id')
+    user = Profile.objects.all()
 
-    return render(request, 'home.html', {'images':images})
+    return render(request, 'home.html', {'images':images, 'user':user})
 
 
 
