@@ -13,8 +13,9 @@
             {% for pics in images %}
             <div class="col-md-12 col-md-6 col-lg-4" id="main" style="gap: 15px;">
                 <div class="card mb-4" id="">
-                    <img src="{{ pics.image.url }}"
-                        class="card-img-top responsive" alt="Personal">
+                    <a href="{% url 'project_details' pics.id %}">
+                        <img src="{{ pics.image.url }}"class="card-img-top responsive" alt="Personal">
+                    </a>
                     <div class="card-body ">
                         <p class="fade-item mb-2">{{ pics.title }}</p>
                         <div class="d-flex justify-content-between location-date">
@@ -27,8 +28,7 @@
                             </div>
                             
                         </div>
-                        <img src="{{ user.profile_photo.url }}"class="card-img-top responsive" alt="Personal">
-                        <p>BY {{user.username}}</p>
+                        
 
                     </div>
                 </div>

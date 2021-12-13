@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+ {% block content %}
+<br><br><br><br>
+ <div class="container-fluid">
+  <div class="row">
+      <div class="col-md-6">
+              {% if project.image %}
+              <img src="{{project.image.url}}" alt="" class="card-img-top">
+              {% endif %}
+              <div class="cardShare">
+                <a id="share" class="share-icon" href="{{project.url}}" target="_blank"><i class="fa fa-share"></i></a>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Project Name: {{project.project_name}}</h5>
+                <p>About: {{ project.description }}</p>
+                <p>Category: {{project.category}}</p>
+                <p>Location: {{project.location}}</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">By: {{user.username}}</small>
+              </div>
+      </div>
+  </div>
+</div>
+ {% endblock %}

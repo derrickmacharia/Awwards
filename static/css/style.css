@@ -58,6 +58,31 @@ h2{
   padding-bottom: 1rem;
 }
 
+.aimg{
+  border-radius: 50%;
+  height: 230px;
+  width: 270px;
+}
+.cardShare {
+  position: relative;
+  margin-top:-25px;
+  margin-left: 80%;
+}
+.share-icon {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s ease;
+  outline: 0;
+  font-size: 1.5rem;
+  box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.12),
+      0 2px 4px rgba(0, 0, 0, 0.24);
+}
 
 /* The side navigation menu */
 .sidenav {

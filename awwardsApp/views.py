@@ -15,17 +15,30 @@ import cloudinary.api
 # Create your views here.
 
 # @login_required(login_url='/accounts/login/')
-# def home(request, user_id):
-#     images = Project.objects.all()
-#     user = Profile.objects.filter(user_id=user_id).first()
+# def home(request):
+#     images = Project.objects.all().order_by('-id')
 
-#     return render(request, 'home.html',{'images': images, 'user':user})
+#     return render(request, 'home.html',{'images': images})
+
 
 @login_required(login_url="/accounts/login/")
 def home(request):
     images = Project.objects.all().order_by('-id')
 
     return render(request, 'home.html', {'images':images})
+
+
+
+# def details(request, project_id):
+#     images = Project.objects.get(id=project_id)
+
+#     return render(request, 'project_details.html', {'images':images})
+
+
+def project_details(request, project_id):
+    project = Project.objects.get(id=project_id)
+    # get project rating
+    return render(request, "project_details.html", {"project": project})
 
 @login_required(login_url="/accounts/login/")
 def profile(request):
@@ -46,6 +59,18 @@ def upload(request):
     else:
         form =  ProjectForm()
     return render(request, 'project.html', {'form':form})
+
+@login_required(login_url='/accounts/login/')
+def search_project(request):
+    if 'search' in request.GET and request.GET['search']:
+        search_term = request.GET.get('search').lower()
+        images = Project.search_project_name(search_term)
+        message = f'{search_term}'
+
+        return render(request, 'search.html', {'found': message, 'images': images})
+    else:
+        message = 'Not found'
+        return render(request, 'search.html', {'danger': message})
 
 @login_required(login_url="/accounts/login/")
 def create_profile(request):

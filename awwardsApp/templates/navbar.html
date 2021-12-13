@@ -30,6 +30,18 @@
             <div class="line"></div>
             <span>MENU</span>
         </div>
+        <div class="forms">
+            <form class=" form" role="search" action="{% url 'search.post' %}">
+              <div class="input-group " >
+                <input type="text" class="form-control" placeholder="Search photos" name="search" style="height: 30px; width: 200px;" >
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </form>
+            
+        </div>
+
     </div>
   </nav>
   
