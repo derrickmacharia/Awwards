@@ -103,3 +103,26 @@ def update_profile(request,id):
             
     ctx = {"form":form}
     return render(request, 'update_profile.html', ctx)
+
+@login_required(login_url="/accounts/login/")
+def rating(request,id):
+    if request.method == 'POST':
+        project = Project.objects.get(id = id)
+        current_user = request.user
+        design = request.POST['design']
+        content = request.POST['content']
+        usability = request.POST['content']
+
+        Rating.objects.create(
+            project=project,
+            user=current_user,
+            design=design,
+            usability=usability,
+            content=content,
+            average=round((float(design)+float(usability)+float(content))/3,2),)
+
+        return render(request, 'project_details.html',{'project':project})
+
+    else:
+        project = Project.objects.get(id = id)
+        return render(request, 'project_details.html',{'project':project})

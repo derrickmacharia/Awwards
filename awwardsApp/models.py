@@ -2,6 +2,7 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 import datetime as dt
 from django.contrib.auth.models import User
+from django.db.models.deletion import CASCADE
 from django.db.models.fields import related
 
 # Create your models here.
@@ -55,6 +56,8 @@ class Project(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE,null=True)
     url = models.URLField(max_length=100, null=True)
     post_date = models.DateTimeField(auto_now_add=True,null=True)
+    # rating =  models.ForeignKey(null=True,on_delete=CASCADE)
+    # avg_rating = models
 
     def __str__(self):
         return self.title
@@ -101,3 +104,14 @@ class Project(models.Model):
         return self.title
 
 
+# rating models
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    design = models.IntegerField(default=0, blank=True, null=True)
+    usability = models.IntegerField(default=0, blank=True, null=True)
+    content = models.IntegerField(default=0, blank=True, null=True)
+    average = models.IntegerField(default=0, blank=True, null=True)
+    
+    def __str__(self):
+        return self.user.username
