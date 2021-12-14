@@ -23,4 +23,12 @@ This is a Python Application where a user(s) can view  a websites, add a website
 ###### Screenshot 3
  <img src="static/images/Screenshot (3).png">
 
->
+###### Screenshot 4
+ <img src="static/images/Screenshot (4).png">
+
+###### Screenshot 5
+ <img src="static/images/Screenshot (5).png">
+
+
+###### Screenshot 6
+ <img src="static/images/Screenshot (6).png">
