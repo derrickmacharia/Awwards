@@ -25,6 +25,7 @@
                             <div>
                                 <p>{{ pics.post_date|date}}</p>
                                 <p>{{ pics.user.bio}}</p>
+                                <a href="{{ pics.url }}"><button  class="btn btn-info">{{ pics.title }}</button></a>
                             </div>
                             
                         </div>
@@ -37,7 +38,7 @@
             <div class="profiles">
                             
                 <img src="{{pics.profile_photo.url}}" alt="" class="card-img-top">
-                
+
                 
             </div>
         </div>
