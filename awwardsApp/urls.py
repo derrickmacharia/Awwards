@@ -12,4 +12,6 @@ urlpatterns=[
     path('search/', views.search_project, name='search.post'),
     path('update_profile/<int:id>',views.update_profile, name='update_profile'),
     path('rate/<int:id>', views.rating, name='rate'),
+    path('api/projects/', views.ProjectList.as_view()),
+    path('api/profiles/',views.ProfileList.as_view())
 ]

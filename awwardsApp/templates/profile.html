@@ -65,31 +65,32 @@
                 </form>
             </div>
             
-
+            <div class="container" id="">
+                <h3 class="post-title" id="ig-text">MY &nbsp; POSTED &nbsp;PROJECTS:</h3>
+                    {% for image in project %}
+                    <div class="col-md-4" id="post-image">
+                        
+                            <div class="card mb-4">
+                                <img src="{{ image.image.url }}" class="img-responsive" alt="Image">
+                            </div>
+                            </p>
+                    </div>
+                    {% empty %}
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="alert alert-info" role="alert">
+                            No posts!
+                        </div>
+                    </div>
+                </div>
+                    {% endfor %}
 
         </div>
     </div>
+
     </div>
     
 </section>
 
-<div class="container" id="">
-    <h3 class="post-title" id="ig-text">MY &nbsp; POSTED &nbsp;PROJECTS:</h3>
-        {% for image in project %}
-        <div class="col-md-4" id="post-image">
-            
-                <div class="card mb-4">
-                    <img src="{{ image.image.url }}" class="img-responsive" alt="Image">
-                </div>
-                </p>
-        </div>
-        {% empty %}
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <div class="alert alert-info" role="alert">
-                No posts!
-            </div>
-        </div>
-    </div>
-        {% endfor %}
+
 {% endblock %}
