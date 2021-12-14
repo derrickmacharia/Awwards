@@ -3,7 +3,40 @@
 {% block content %}
 {{block.super}}
 
-<h1>good</h1>
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+  
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://media.istockphoto.com/photos/trophy-picture-id108353971?b=1&k=20&m=108353971&s=170667a&w=0&h=eDFg3fJemZdBTEAUOu5Y7WRRhTz2Kc3Pdex7uyaVP2c="
+         alt="Los Angeles" width="100%"  style="object-fit: cover;height: 600px;">
+      </div>
+      <div class="carousel-item">
+        <img src="https://media.istockphoto.com/photos/golden-trophy-cup-on-dark-background-copy-space-for-text-3d-rendering-picture-id1296652778?b=1&k=20&m=1296652778&s=170667a&w=0&h=guJnyq9Xw1HUsdjZ7wXiKYhlaCdbRUoDxORkS_kt564="
+         alt="Chicago" width="100%" style="object-fit: cover;height: 600px;">
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTl8fHdlYnNpdGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+         alt="New York" width="100%" style="object-fit: cover;height: 600px;">
+      </div>
+    </div>
+  
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  
+  </div>
 
 
 <section class="blog-section" id="posts main">

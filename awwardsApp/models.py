@@ -36,6 +36,9 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()
 
+    def create_profile(self):
+        self.save()
+
     def update_profile(self):
         self.update()
 
@@ -43,8 +46,6 @@ class Profile(models.Model):
     def get_profile_by_user(cls, user):
         profile = cls.objects.filter(user=user)
         return profile
-
-    
 
     def __str__(self):
         return self.user.username
