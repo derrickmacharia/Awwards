@@ -36,6 +36,9 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()
 
+    def update_profile(self):
+        self.update()
+
     @classmethod
     def get_profile_by_user(cls, user):
         profile = cls.objects.filter(user=user)
