@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
-from .models import  Profile, Project
+from .models import  Profile, Project, Rating
 
 
 class ProfileTestClass(TestCase):
@@ -72,3 +72,16 @@ class ProjectTestClass(TestCase):
         self.project.delete_project()
         projects = Project.objects.all()
         self.assertTrue(len(projects) == 0)
+
+class RatingTestClass(TestCase):
+    def setUp(self):
+        user = User.objects.create(
+            username="test_user", first_name="ezekiel", last_name="kibiego"
+        )
+
+        self.rating = Rating(
+            user=user,
+        )
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.rating, Rating))
