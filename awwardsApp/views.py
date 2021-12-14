@@ -9,7 +9,14 @@ from django.http.response import Http404, HttpResponseRedirect
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-
+from awwardsApp.models import Profile
+from rest_framework import serializers
+from rest_framework.views import APIView
+from .permissions import IsAdminOrReadOnly
+from awwardsApp import serializer
+from django.http import HttpResponseRedirect, Http404
+from .serializer import ProfileSerializer, ProjectSerializer
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -128,3 +135,17 @@ def rating(request,id):
     else:
         project = Project.objects.get(id = id)
         return render(request, 'project_details.html',{'project':project})
+
+class ProjectList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get(self,request,format=None):
+        projects = Project.objects.all()
+        serializer = ProjectSerializer(projects,many=True)
+        return Response(serializer.data)
+
+class ProfileList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get(self,request,format=None):
+        profiles = Profile.objects.all()
+        serializer = ProfileSerializer(profiles,many=True)
+        return Response(serializer.data)
