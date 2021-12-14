@@ -119,3 +119,13 @@ class Rating(models.Model):
     
     def __str__(self):
         return self.user.username
+
+    def save_ratw(self):
+        self.save()
+
+    def delete_rate(self):
+        self.delete()
+
+    @classmethod
+    def get_project_rates(cls, project):
+        return cls.objects.filter(project = project)
