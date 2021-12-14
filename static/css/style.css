@@ -84,6 +84,18 @@ h2{
       0 2px 4px rgba(0, 0, 0, 0.24);
 }
 
+.rate{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10rem;
+}
+button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
 /* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */

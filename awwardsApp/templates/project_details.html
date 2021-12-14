@@ -1,6 +1,6 @@
 {%extends 'base.html'%}
  {% block content %}
-<br><br><br><br>
+
  <div class="container-fluid">
   <div class="row">
       <div class="col-md-12">
@@ -21,29 +21,66 @@
               </div>
       </div>
   </div>
-  <div class="row">
-    <form action="{% url 'rate' project.id %}"method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="Design">Design</label>
-            <input type="number" class="form-control" name="design" min="0"
-                max="10" value="0">
-            
+  <div class="container">
+    <div class="row ">
+        <form action="{% url 'rate' project.id %}"method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="rate">
+                <div class="mb-3">
+                    <label for="Design">Design</label>
+                    <input type="number" class="form-control" name="design" min="0"
+                        max="10" value="0">
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="Content">Content</label>
+                    <input type="number" class="form-control" name="content" min="0"
+                        max="10" value="0">
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="Usability">Usability</label>
+                    <input type="number" class="form-control" name="usability" min="0"
+                        max="10" value="0">
+                    
+                </div>
+            </div>
+            <button class="phots"><i class="fa fa-plus text-white"></i>   Submit</button>
+        </form>
+    </div>
+  </div>
+<div class="row card p-3">
+    <h2 style="text-align: center;"><u>This Project's Ratings</u></h2>
+    {% for rate in rating %}
+    <div class="container-fluid">
+       
+        <div class="col-md-6">
+        {% for rate in rating %}
+        <div class="row">
+          <div class="col-md-3">
+            <p>Voter: {{rate.user.username}}</p>
+          </div>
+          <div class="col-md-3">
+            <p>Design: {{rate.design}}</p>   
+          </div>
+          <div class="col-md-3">
+            <p>Content: {{rate.content}}</p>
+          </div>
+          <div class="col-md-3">
+            <p>Usability:{{rate.usability}}</p>
+          </div>
         </div>
-        <div class="mb-3">
-            <label for="Content">Content</label>
-            <input type="number" class="form-control" name="content" min="0"
-                max="10" value="0">
-            
-        </div>
-        <div class="mb-3">
-            <label for="Usability">Usability</label>
-            <input type="number" class="form-control" name="usability" min="0"
-                max="10" value="0">
-            
-        </div>
-        <button class="phots"><i class="fa fa-plus text-white"></i>   Submit</button>
-    </form>
-</div>
+        {% empty %}
+          <p class="alert alert-danger"role="alert">No ratings yet!</p>
+        {% endfor %}
+        </div> 
+      </div>
+    <hr>
+    {% empty %}
+    <div class="col-md-12 text-center not-found">
+        <i class="fa fa-exclamation"></i>
+        <p>No votes yet!</p>
+    </div>
+    {% endfor %}
 </div>
  {% endblock %}
