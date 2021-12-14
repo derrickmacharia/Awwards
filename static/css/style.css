@@ -84,7 +84,9 @@ h2{
       0 2px 4px rgba(0, 0, 0, 0.24);
 }
 
-
+.average{
+  font-weight: 700;
+}
 .rate{
   display: flex;
   align-items: center;
