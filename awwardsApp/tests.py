@@ -43,7 +43,7 @@ class ProfileTestClass(TestCase):
 class ProjectTestClass(TestCase):
     def setUp(self):
         user = User.objects.create(
-            username="test_user", first_name="ezekiel", last_name="kibiego"
+            username="test_user", first_name="derrick", last_name="macharia"
         )
 
         self.project = Project(
@@ -76,7 +76,7 @@ class ProjectTestClass(TestCase):
 class RatingTestClass(TestCase):
     def setUp(self):
         user = User.objects.create(
-            username="test_user", first_name="ezekiel", last_name="kibiego"
+            username="test_user", first_name="derrick", last_name="macharia"
         )
 
         self.rating = Rating(
