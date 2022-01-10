@@ -38,43 +38,37 @@
   
   </div>
 
-
-<section class="blog-section" id="posts main">
-    <div class="container mt-5" style="gap: 15px;">
-        
-        <div class="row mt-4" id="">
-            {% for pics in images %}
-            <div class="col-md-12 col-md-6 col-lg-6" id="main" style="gap: 15px;">
-                <div class="card mb-4" id="">
-                    <a href="{% url 'project_details' pics.id %}">
-                        <img src="{{ pics.image.url }}"class="card-img-top responsive" alt="Personal">
+  <div class="container-fluid background">
+    <div class="row w-50 mx-auto">
+        {% for image in images %}
+        <div class="card my-4  large" style="max-width: 100%;">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="">
+                        <img src="{{image.user.profile.profile_photo.url}}" class="user-avatar border-radius me-2" height='30px' width="30px" alt="Profile Photo">
                     </a>
-                    <div class="card-body ">
-                        <p class="fade-item mb-2">{{ pics.title }}</p>
-                        <div class="d-flex justify-content-between location-date">
-                            <div>
-                                <p class="text-capitalise">{{ pics.location }}</p>
-                            </div>
-                            <div>
-                                <p>{{ pics.post_date|date}}</p>
-                                <p>{{ pics.user.bio}}</p>
-                                <a href="{{ pics.url }}"><button  class="btn btn-info">{{ pics.title }}</button></a>
-                            </div>
-                            
-                        </div>
-                        
-
-                    </div>
+                    <a href="">
+                        <h6>{{image.user.username}}</h6>
+                    </a>
                 </div>
+                <h2>...</h2>
+            </div>
+            <img src="{{ image.image.url }}" class="img-fluid" alt="Post Image">
+            <div class="card-body">
+                <i class="far fa-heart"></i>
+                <p class="fade-item">{{image.likes }} Likes </p>
+                <h6 class="">{{image.user.username}} {{ image.caption|slice:":20" }}<small><span
+                            class="text-muted"> <a href="">...Read
+                                More</a></span>
+                    </small>
+                </h6>
+                <a href="">
+                    <p class="text-muted">View all {{image.comments }} Comments
+                    </p>
+                </a>
             </div>
             {% endfor %}
-            <div class="profiles">
-                            
-                <img src="{{pics.profile_photo.url}}" alt="" class="card-img-top">
-
-                
-            </div>
         </div>
+        <br>
     </div>
-</section>
-{% endblock %}
+    {% endblock %}

@@ -30,10 +30,11 @@ from rest_framework.response import Response
 
 @login_required(login_url="/accounts/login/")
 def home(request):
+    current_user = request.user
     images = Project.objects.all().order_by('-id')
     user = Profile.objects.all()
 
-    return render(request, 'home.html', {'images':images, 'user':user})
+    return render(request, 'home.html', {'images':images, 'user':user, 'current_user':current_user})
 
 
 
